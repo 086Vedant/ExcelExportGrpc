@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.quarkus.hello";
+option java_outer_classname = "ExcelExportProto";
+
+package helloworld;
+
+message ExcelExportRequest
+{
+    string ObjectName =1;
+}
+
+message ExcelExportResponce
+{
+    bytes ExcelFile =1;
+    ExcelExportError error = 2;
+}
+
+message ExcelExportError
+{
+    string ExcelExportErrorMessage=1;
+}
+
+service ExcelExportServicegRPC
+{
+    rpc ExcelExportgRPC (ExcelExportRequest) returns (ExcelExportResponce)  {} 
+}
